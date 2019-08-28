@@ -4,6 +4,10 @@ import {BookItem} from '../book-item/book-item';
 import {BOOKS} from './data';
 
 export class BookList extends Component {
+  componentDidMount() {
+    document.title = 'Book List';
+  }
+
   render() {
     return (
       <>
