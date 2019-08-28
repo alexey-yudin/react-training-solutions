@@ -1,0 +1,16 @@
+.book-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+}
+
+.list-view {
+    width: 60%;
+}
+
+.grid-view {
+    width: calc(50% - 20px);
+}
