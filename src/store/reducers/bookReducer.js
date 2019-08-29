@@ -2,13 +2,14 @@ import {FETCH_BOOKS_ERROR, FETCH_BOOKS_STARTED, FETCH_BOOKS_SUCCESS} from "../ac
 
 export const booksInitialState = {
   booksList: [],
-  isLoading: false
+  isLoading: false,
+  error: null
 };
 
 export function bookReducer(state = booksInitialState, action) {
   switch (action.type) {
     case FETCH_BOOKS_STARTED:
-      return {...state, isLoading: true};
+      return {...state, isLoading: true, error: null};
     case FETCH_BOOKS_SUCCESS:
       return {...state, isLoading: false, booksList: action.payload};
     case FETCH_BOOKS_ERROR:

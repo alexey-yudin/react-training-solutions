@@ -1,5 +1,5 @@
 import {bookReducer} from "./bookReducer";
-import {fetchBooksStarted, fetchBooksSuccess} from "../actions/bookActions";
+import {fetchBooksError, fetchBooksStarted, fetchBooksSuccess} from "../actions/bookActions";
 
 const booksList = [{
   id: 1,
@@ -16,11 +16,13 @@ describe('Book reducer', () => {
       const action = fetchBooksStarted();
       const initialState = {
         booksList: [],
-        isLoading: false
+        isLoading: false,
+        error: null
       };
       const expectedState = {
         booksList: [],
-        isLoading: true
+        isLoading: true,
+        error: null
       };
       const newState = bookReducer(initialState, action);
 
@@ -33,15 +35,36 @@ describe('Book reducer', () => {
       const action = fetchBooksSuccess(booksList);
       const initialState = {
         booksList: [],
-        isLoading: false
+        isLoading: false,
+        error: null
       };
       const expectedState = {
         booksList: booksList,
-        isLoading: false
+        isLoading: false,
+        error: null
       };
       const newState = bookReducer(initialState, action);
 
       expect(newState).toEqual(expectedState);
     });
+  });
+
+  describe('FETCH_BOOKS_ERROR', () => {
+    it('should set the error', () => {
+      const action = fetchBooksError(new Error());
+      const initialState = {
+        booksList: [],
+        isLoading: false,
+        error: null
+      };
+      const expectedState = {
+        booksList: [],
+        isLoading: false,
+        error: new Error()
+      };
+      const newState = bookReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    })
   });
 });
