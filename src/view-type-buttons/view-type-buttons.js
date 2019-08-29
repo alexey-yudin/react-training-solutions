@@ -1,6 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import './view-type-buttons.css';
+import {Link} from "react-router-dom";
 
 export class ViewTypeButtons extends Component {
   getActiveStyle = viewType => {
@@ -10,18 +11,23 @@ export class ViewTypeButtons extends Component {
   render() {
     return (
       <div className='view-type-buttons'>
-        <button
-          type='button'
-          className={`view-type-button ${this.getActiveStyle('list')}`}
-          onClick={this.props.setViewType('list')}>
-          List
-        </button>
-        <button
-          type='button'
-          className={`view-type-button ${this.getActiveStyle('grid')}`}
-          onClick={this.props.setViewType('grid')}>
-          Grid
-        </button>
+        <Link to='/list'>
+          <button
+            type='button'
+            className={`view-type-button ${this.getActiveStyle('list')}`}
+            onClick={this.props.setViewType('list')}>
+            List
+          </button>
+        </Link>
+
+        <Link to='/grid'>
+          <button
+            type='button'
+            className={`view-type-button ${this.getActiveStyle('grid')}`}
+            onClick={this.props.setViewType('grid')}>
+            Grid
+          </button>
+        </Link>
       </div>
     );
   }

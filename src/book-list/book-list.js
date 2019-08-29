@@ -16,6 +16,15 @@ export class BookList extends Component {
 
   componentDidMount() {
     document.title = 'Book List';
+
+    const isListRoute = this.props.location.pathname === '/rows' || this.props.location.pathname === '/';
+    const isGridRoute = this.props.location.pathname === '/grid';
+
+    if (isListRoute) {
+      this.setState({viewType: 'list'})
+    } else if (isGridRoute) {
+      this.setState({viewType: 'grid'});
+    }
   }
 
   setViewType = viewType => {
