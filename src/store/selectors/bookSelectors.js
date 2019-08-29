@@ -5,3 +5,7 @@ export function getBooksList(state) {
 export function getBooksLoading(state) {
   return state.booksState.isLoading;
 }
+
+export function getBookDetail(state) {
+  return state.booksState.bookDetail;
+}
